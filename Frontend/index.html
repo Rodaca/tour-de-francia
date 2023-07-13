@@ -28,7 +28,49 @@
     </a>
 
     <!-- Sidebar -->
-    <?php include "views/assets/sidebar.php";?>
+   <!--  <?php include "views/assets/sidebar.php";?> -->
+   <nav class="sidebar close">
+    <header>
+        <div class="image-text">
+            <span class="image">
+                <img src="../img/logo.png" alt="">
+            </span>
+            <div class="text logo-text">
+                <span class="name">Superartemis</span>
+                <span class="profession">Artemis</span>
+            </div>
+        </div>
+        <i class='bx bx-chevron-right toggle'></i>
+    </header>
+      <!-- <div id="listUl"></div> -->
+      <ul class="menu-links">
+        <li class="nav-link active">
+            <a href="index.html">
+                <i class='bx bx-home-alt icon' ></i>
+                <span class="text nav-text">Categorias</span>
+            </a>
+        </li>
+        <li class="nav-link">
+            <a href="../empleados/empleado.html">
+                <i class='bx bx-pie-chart-alt icon' ></i>
+                <span class="text nav-text">Empleados</span>
+            </a>
+        </li>
+        <li class="nav-link">
+            <a href="../clientes/cliente.html">
+                <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                <span class="text nav-text">Clientes</span>
+            </a>
+        </li>
+        <li class="nav-link">
+            <a href="../productos/producto.html">
+                <i class='bx bx-wallet icon' ></i>
+                <span class="text nav-text">Productos</span>
+            </a>
+        </li>
+    </ul>
+            
+</nav>
     <!-- /.sidebar -->
   </aside>
 
@@ -38,29 +80,63 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6 p-3 row justify-content-around">
+          <div class="col-sm-6 p-3">
             <h1 class="pr-3">CICLISTAS</h1>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
               Nuevo Ciclista
             </button>
-            
-          </div>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">E-commerce</li>
-            </ol>
+            <!-- modal de nuevo ciclista -->
+            <div class="modal fade" id="modal-default">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="card card-primary">
+                      <div class="card-header">
+                        <h3 class="card-title">Ciclista</h3>
+                      </div>
+                      
+                      <form id="formCiclista"><!-- nombreci,equipo_idci,edadci,nacionalidadci -->
+                        <div class="card-body">
+                          <div class="form-group">
+                            <label for="nombreci">Nombre</label>
+                            <input type="text" class="form-control" id="nombreci" placeholder="Enter Nombre">
+                          </div>
+                          <div class="form-group">
+                            <label for="equipo_idci">#Equipo</label>
+                            <input type="number" class="form-control" id="equipo_idci" placeholder="Enter  numero de equipo">
+                          </div>
+                          <div class="form-group">
+                            <label for="edadci">Edad</label>
+                            <input type="number" class="form-control" id="edadci" placeholder="Enter edad">
+                          </div>
+                          <div class="form-group">
+                            <label for="nacionalidadci">Nacionalidad</label>
+                            <input type="text" class="form-control" id="nacionalidadci" placeholder="Enter nacionalidad">
+                          </div>
+                        </div>
+                        <!-- /.card-body -->
+        
+                        <div class="card-footer">
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                      </form>
+                  </div>
+                </div>
+                <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+            </div>
           </div>
         </div>
+        <div class="row" id="carta"></div>
+      </div>
       </div><!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
     <section class="content">
 
-    <div class="row" id="carta"></div>
+    
 
 
     </section>
@@ -97,5 +173,6 @@
   })
 </script>
 <script src="scrip.js" type="module"></script>
+<script src="js/sidebar.js"></script>
 </body>
 </html>

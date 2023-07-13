@@ -1,10 +1,10 @@
-import { getCiclistas } from "./API.js";
+import { getCiclistas,addCiclistas,deleteCiclistas,selectOne,updateCiclistas } from "./API.js";
 
 addEventListener('DOMContentLoaded',()=>{
-    cargarCategoria();
+    cargarCiclista();
 })
 
-async function cargarCategoria(){
+async function cargarCiclista(){
     const datos = await getCiclistas();
     const carta=document.querySelector('#carta');
     datos.forEach(element => {
@@ -23,3 +23,33 @@ async function cargarCategoria(){
         `
     });
 }
+
+const formCicli= document.querySelector("#formCiclista");
+formulario.addEventListener("submit", insert);
+
+function insert(e) {/* nombreci,equipo_idci,edadci,nacionalidadci */
+  e.preventDefault();
+  const nombre = document.querySelector("#nombreci").value;
+  const equipo_id = document.querySelector("#equipo_idci").value;
+  const edad = document.querySelector("#edadci").value;
+  const nacionalidad = document.querySelector("#nacionalidadci").value;
+
+  const registro = {
+    nombre,
+    equipo_id,
+    edad,
+    nacionalidad
+  };
+
+
+  if (validation(registro)) {
+    alert("Todos los datos son obligatorios");
+  }
+  alert("Datos guardados correctamente.");
+  return addCategoria(registro);
+};
+
+function validation(Objeto) {
+  return !Object.values(Objeto).every((element) => element !== "");
+};
+
