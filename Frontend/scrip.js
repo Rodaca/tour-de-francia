@@ -4,9 +4,11 @@ addEventListener('DOMContentLoaded',()=>{
     cargarCiclista();
 })
 
+const carta=document.querySelector('#carta');
+
 async function cargarCiclista(){
     const datos = await getCiclistas();
-    const carta=document.querySelector('#carta');
+    
     datos.forEach(element => {
         const {_id,nombre,equipo_id,edad,nacionalidad}=element;
         carta.innerHTML+=`
@@ -25,7 +27,7 @@ async function cargarCiclista(){
 }
 
 const formCicli= document.querySelector("#formCiclista");
-formulario.addEventListener("submit", insert);
+formCicli.addEventListener("submit", insert);
 
 function insert(e) {/* nombreci,equipo_idci,edadci,nacionalidadci */
   e.preventDefault();
@@ -33,23 +35,36 @@ function insert(e) {/* nombreci,equipo_idci,edadci,nacionalidadci */
   const equipo_id = document.querySelector("#equipo_idci").value;
   const edad = document.querySelector("#edadci").value;
   const nacionalidad = document.querySelector("#nacionalidadci").value;
-
+  
   const registro = {
     nombre,
     equipo_id,
     edad,
     nacionalidad
   };
-
-
+  console.log(registro);
   if (validation(registro)) {
     alert("Todos los datos son obligatorios");
   }
   alert("Datos guardados correctamente.");
-  return addCategoria(registro);
+  return addCiclistas(registro);
 };
 
 function validation(Objeto) {
   return !Object.values(Objeto).every((element) => element !== "");
 };
 
+
+
+carta.addEventListener("click",borrar);
+
+function borrar(e){
+    if (e.target.classList.contains("eliminar")) {
+        console.log(e.target);
+        const idCategorias = e.target.getAttribute("id");
+        const confir = confirm("Desea eliminar esta categoria?");
+        if (confir) {
+            deleteCategoria(idCategorias);
+        }
+    }
+}

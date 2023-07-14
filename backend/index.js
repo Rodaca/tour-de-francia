@@ -9,6 +9,10 @@ import premiosRouter from "./router/premios.routes.js";
 
 
 const app =express();
+const configCors = {
+    methods:["GET", "POST", "PUT", "DELETE","PATCH"]
+};
+app.use(cors(configCors));
 app.use(express.json());
 app.use("/ciclista",ciclistasRouter);
 app.use("/equipo",equiposRouter);
@@ -19,10 +23,7 @@ dotenv.config();
 const PORT =process.env.PORT;
 
 conectarDB();
-const configCors ={
-    method:["GET","POST","PATCH","DELETE"]
-}
-app.use(cors(configCors))
+
 
 app.listen(PORT,()=>{
     console.log(`Server Wed listenning on port ${PORT}`);
